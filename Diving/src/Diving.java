@@ -7,13 +7,15 @@ import java.util.Scanner;
 public class Diving {
 	
 	static double Score1,Score2,Score3,Score4,Score5,Score6,Score7,scores, difficulty,sum,total;
+	static double diff=0.0;
+	static Scanner keyboard = new Scanner(System.in);
 	
 	public static void inputvalidScore()
 	{
 		/*
 		 * this method will take inputs for scores
 		 */
-		Scanner keyboard = new Scanner(System.in);
+		
 		System.out.println("What does Judge 1 say?");
 		Score1 = keyboard.nextDouble();
 		/*
@@ -59,7 +61,7 @@ public class Diving {
 		{
 			System.out.println("that Score seems out there...try asking the judges again and comeback to me");System.out.close();
 		}
-		keyboard.close();
+		
 		 
 				
 		
@@ -71,7 +73,6 @@ public class Diving {
 		/*
 		 * this method will use the inputs from inputvalidScores and list the scores as an array. the scores will also be placed into a sum at the end
 		 */
-		Scanner keyboard = new Scanner(System.in);
 		double[]scores = new double[7];
 		scores[0] = Score1;
 		scores[1] = Score2;
@@ -100,7 +101,6 @@ public class Diving {
 		}
 		 System.out.println(("your highest and lowest score will be removed in your final score"));
 		
-		keyboard.close();
 		return sum;
 		
 		
@@ -111,10 +111,16 @@ public class Diving {
 		/*
 		 * setting the difficulty value
 		 */
-		Scanner keyboard = new Scanner(System.in);
-		difficulty = 2.7;
+		difficulty = keyboard.nextDouble();
+		
+		while(difficulty<1.2 || difficulty > 3.8)
+		{
+		System.out.println("i'm sorry...my hearing's off... what was the difficulty?");	
+		difficulty = keyboard.nextDouble();
+		}
 		System.out.println("So the difficulty was " + difficulty);
-		keyboard.close();
+			
+		
 				return difficulty;
 	}
 	
@@ -133,13 +139,14 @@ public static void main(String[]args)
 	/*
 	 * piecing above methods together
 	 */
-	Scanner keyboard = new Scanner(System.in);
+	
 	inputvalidScore();
     inputallScores();
     System.out.println("on a scale of 1.2 to 3.8, how difficult was your dive?");
     difficulty();
     calculatescore();
     System.out.println("your Total Score is " + total);
-	keyboard.close();
+keyboard.close();	
 }
+
 }
